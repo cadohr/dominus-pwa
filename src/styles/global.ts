@@ -19,6 +19,7 @@ export default createGlobalStyle`
   }
 
   body {
+    background: #57ba91;
     -webkit-font-smoothing: antialiased !important;
   }
 
@@ -38,6 +39,59 @@ export default createGlobalStyle`
     cursor: pointer;
     border: none;
   }
+  
+  .container {
+    display: flex;
+    flex-flow: column nowrap;
+    height: 100vh;
+    max-width: 375px;
+    margin: 0 auto;
+  }
+
+  .row {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    color: #fff;
+    background: #5cc398;
+    padding: 10px;
+  }
+
+  .reset-button {
+    display: flex;
+    justify-content: center;
+    height: 40px;
+
+    color: #fff;
+    background: #57ba91;
+
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .point-list {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    ul > li {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+
+  .total {
+    display: flex;
+    flex-grow: 2;
+    justify-content: flex-end;
+    font-size: 200px;
+  }
 
   .Modal {
     display: flex;
@@ -48,6 +102,8 @@ export default createGlobalStyle`
     left: 0;
     right: 0;
     bottom: 0;
+    max-width: 375px;
+    margin: 0 auto;
 
     img {
       width: 80px;

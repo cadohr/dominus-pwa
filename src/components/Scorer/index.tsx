@@ -3,7 +3,7 @@ import Modal from "react-modal";
 
 import { defaultStones, StoneType } from "../../config/stones";
 
-import { Container, Row, ResetButton, PointList, Total, Stone } from "./styles";
+import { Stone } from "./styles";
 
 Modal.setAppElement("#root");
 
@@ -55,39 +55,46 @@ const Scorer: React.FC = () => {
   }
 
   return (
-    <Container>
-      <Row onClick={() => openModal("our")}>
-        <PointList>
+    <div className="container">
+      <button className="row" onClick={() => openModal("our")}>
+        <div className="point-list">
           <h1>NOS</h1>
           <ul>
             {ourPoints.map((p, index) => p > 0 && <li key={index}>{p}</li>)}
           </ul>
-        </PointList>
-        <Total>{ourPoints.reduce((acc, value) => acc + value)}</Total>
-      </Row>
-      <ResetButton onClick={newScoreboard}>Rodadas: {turns}</ResetButton>
-      <Row onClick={() => openModal("their")}>
-        <PointList>
+        </div>
+        <span className="total">
+          {ourPoints.reduce((acc, value) => acc + value)}
+        </span>
+      </button>
+      <button className="reset-button" onClick={newScoreboard}>
+        Rodadas: {turns}
+      </button>
+      <button className="row" onClick={() => openModal("their")}>
+        <div className="point-list">
           <h1>ELES</h1>
           <ul>
             {theirPoints.map((p, index) => p > 0 && <li key={index}>{p}</li>)}
           </ul>
-        </PointList>
-        <Total>{theirPoints.reduce((acc, value) => acc + value)}</Total>
-      </Row>
+        </div>
+        <span className="total">
+          {theirPoints.reduce((acc, value) => acc + value)}
+        </span>
+      </button>
       <Modal isOpen={isModalOpen} className="Modal" overlayClassName="Overlay">
         {stones.map((stone) => (
-          <Stone
+          <button
             key={stone.name}
             onClick={() => selectStone(stone)}
-            selected={stone.selected}
+            style={{ opacity: stone.selected ? 1 : 0.4 }}
+            // selected={stone.selected}
           >
             <img src={stone.logo} alt={stone.name} />
-          </Stone>
+          </button>
         ))}
         <button onClick={() => addPoints()}>ADICIONAR</button>
       </Modal>
-    </Container>
+    </div>
   );
 };
 
